@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โรงลวกเส้น - Rong Luak Sen</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --secondary-color: #ff9800;
+            --bg-color: #f8f9fa;
+            --dark-text: #2c3e50;
+            --light-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--dark-text);
+            padding-bottom: 90px;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: #1a1a1a;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--secondary-color);
+        }
+
+        /* Sections Handling */
+        .section {
+            display: none;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; color: var(--secondary-color); }
+        .hero p { font-size: 1.2rem; }
+
+        /* Search & Filter Bar */
+        .search-container {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 40px 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .category-buttons {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .cat-btn {
+            padding: 8px 16px;
+            border: none;
+            background: #e0e0e0;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .cat-btn.active, .cat-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-img {
+            height: 180px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .menu-info {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; }
+        .menu-desc { font-size: 0.85rem; color: #666; margin-bottom: 12px; line-height: 1.4; }
+        .menu-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+        .menu-price { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); }
+
+        .btn-add {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Promotion Special Card */
+        .promo-card {
+            border: 2px solid var(--primary-color);
+            position: relative;
+        }
+
+        .promo-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Modal / Options Pop-up */
+        .modal {
+            display: none;
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            max-height: 85vh;
+            border-radius: 15px;
+            overflow-y: auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .option-group {
+            margin: 15px 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .option-group h4 { margin-bottom: 8px; font-size: 0.95rem; color: #444; }
+
+        .option-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Cart Footer Bar */
+        .cart-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #1a1a1a;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+        }
+
+        .btn-checkout {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* About & Location Section */
+        .about-card, .location-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo"><i class="fa-solid => fa-bowl-food"></i> โรงลวกเส้น</div>
+            <nav>
+                <ul>
+                    <li><a onclick="showSection('home')" class="nav-link active" id="nav-home">หน้าหลัก</a></li>
+                    <li><a onclick="showSection('menu')" class="nav-link" id="nav-menu">เมนูอาหาร</a></li>
+                    <li><a onclick="showSection('promo')" class="nav-link" id="nav-promo">โปรโมชั่นพิเศษ</a></li>
+                    <li><a onclick="showSection('about')" class="nav-link" id="nav-about">เกี่ยวกับร้าน</a></li>
+                    <li><a onclick="showSection('location')" class="nav-link" id="nav-location">พิกัด & แกลลอรี่</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 1. Home Section -->
+    <div id="home" class="section active">
+        <div class="hero">
+            <h1>ยินดีต้อนรับสู่ โรงลวกเส้น</h1>
+            <p>อร่อยเด็ด เข้มข้น ทุกชาม ก๋วยเตี๋ยว ข้าวซอยสูตรเชียงใหม่ และกะเพราหมูกรอบ</p>
+            <br>
+            <button class="btn-checkout" onclick="showSection('menu')">สั่งอาหารเลย</button>
+        </div>
+        <h2>เมนูแนะนำติดดาว ⭐</h2>
+        <div class="menu-grid" id="recommended-grid"></div>
+    </div>
+
+    <!-- 2. Menu Section -->
+    <div id="menu" class="section">
+        <h2>เมนูอาหารทั้งหมด</h2>
+        
+        <!-- Search & Filter Bar -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ค้นหาเมนูที่ต้องการ..." onkeyup="filterMenu()">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="category-buttons">
+                <button class="cat-btn active" onclick="filterCategory('all')">ทั้งหมด</button>
+                <button class="cat-btn" onclick="filterCategory('น้ำ')">ก๋วยเตี๋ยวน้ำ</button>
+                <button class="cat-btn" onclick="filterCategory('แห้ง')">ก๋วยเตี๋ยวแห้ง</button>
+                <button class="cat-btn" onclick="filterCategory('ข้าวซอย')">ข้าวซอย</button>
+                <button class="cat-btn" onclick="filterCategory('ขาหมู')">ข้าวขาหมู</button>
+                <button class="cat-btn" onclick="filterCategory('กะเพรา')">กะเพรา/ผัดกระเทียม</button>
+                <button class="cat-btn" onclick="filterCategory('กับข้าว')">กับข้าว</button>
+                <button class="cat-btn" onclick="filterCategory('ทานเล่น')">ขนม & เครื่องดื่ม</button>
+            </div>
+        </div>
+
+        <div class="menu-grid" id="all-menu-grid"></div>
+    </div>
+
+    <!-- 3. Promotion Section -->
+    <div id="promo" class="section">
+        <h2>โปรโมชั่นสุดคุ้ม 🔥</h2>
+        <div class="menu-grid" id="promo-grid"></div>
+    </div>
+
+    <!-- 4. About Section -->
+    <div id="about" class="section">
+        <div class="about-card">
+            <h2>เกี่ยวกับร้าน "โรงลวกเส้น"</h2>
+            <br>
+            <p>ร้านโรงลวกเส้น พิถีพิถันทุกขั้นตอนการทำ ตั้งแต่การเคี่ยวน้ำซุปให้หวานหอม กลมกล่อม เมนูก๋วยเตี๋ยวต้มยำที่ใส่เครื่องแบบจัดเต็ม ข้าวซอยไก่สูตรแท้จากเชียงใหม่ พร้อมพริกแกงเข้มข้น และเมนูกะเพราหมูกรอบสุดฟิน พร้อมเสิร์ฟความอร่อยส่งตรงถึงคุณทุกวัน!</p>
+        </div>
+    </div>
+
+    <!-- 5. Location & Gallery Section -->
+    <div id="location" class="section">
+        <div class="location-card">
+            <h2>พิกัดร้าน & แกลลอรี่</h2>
+            <p><i class="fa-solid fa-location-dot" style="color:red;"></i> ติดต่อร้าน/ดูภาพเพิ่มเติมได้ที่ Facebook</p>
+            <br>
+            <a href="https://www.facebook.com/people/%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%A5%E0%B8%A7%E0%B8%81%E0%B9%80%E0%B8%AA%E0%B9%89%E0%B8%99/100034169635363/?sk=photos&locale=th_TH" target="_blank" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">
+                <i class="fa-brands fa-facebook"></i> ไปยัง Facebook เพจ โรงลวกเส้น
+            </a>
+            <h3 style="margin-top:20px;">บรรยากาศและเมนูของเรา</h3>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=80" alt="ก๋วยเตี๋ยว">
+                <img src="https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=500&q=80" alt="ข้าวซอย">
+                <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=500&q=80" alt="กะเพรา">
+                <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=500&q=80" alt="อาหารไทย">
+            </div>
+        </div>
+    </div>
+
+    <!-- Option Selection Modal -->
+    <div id="optionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle">ชื่อเมนู</h3>
+            <p id="modalDesc" style="font-size:0.85rem; color:#666; margin-bottom:15px;"></p>
+            <form id="optionsForm"></form>
+            <br>
+            <button class="btn-checkout" style="width:100%;" onclick="addToCartFromModal()">เพิ่มลงตะกร้า</button>
+        </div>
+    </div>
+
+    <!-- Floating Cart Bar -->
+    <div class="cart-bar">
+        <div>
+            <span id="cart-count">0 รายการ</span> | 
+            <span style="font-size:1.2rem; font-weight:bold; color:var(--secondary-color);" id="cart-total">฿0</span>
+        </div>
+        <button class="btn-checkout" onclick="submitOrder()"><i class="fa-solid fa-cart-shopping"></i> สั่งซื้อสินค้า</button>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Database of Menus
+        const menuData = [
+            // โปรโมชั่น
+            { id: 101, name: "เซ็ท ก๋วยเตี๋ยวน้ำใส + เย็นตาโฟ", category: "promo", price: 159, desc: "จากปกติ 170 แถมฟรีเกี๊ยวทอด(ไม่ใส่ไส้)", type: "promo_noodle", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+            { id: 102, name: "เซ็ท ข้าวขาหมู + เกาเหลาน้ำใส", category: "promo", price: 159, desc: "จากปกติ 170 ขาหมูไม่มีไข่", type: "promo_pork", img: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=400" },
+            { id: 103, name: "เซ็ท ก๋วยเตี๋ยวต้มยำ + ข้าวซอยไก่", category: "promo", price: 169, desc: "ชุดจับคู่ความอร่อยสุดคุ้ม", type: "promo_combo", img: "https://images.unsplash.com/photo-1555126634-323283e090fa?w=400" },
+
+            // เมนูแนะนำ
+            { id: 1, name: "หมี่คลุกไก่ฉีก", category: "แห้ง", price: 89, isRec: true, desc: "เส้นหมี่เหนียวนุ่ม คลุกซอสครบรส ทานคู่พริกหมูกระจก", type: "dry_noodle", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 2, name: "ก๋วยเตี๋ยวต้มยำ หมูทรงเครื่อง", category: "น้ำ", price: 75, isRec: true, desc: "มีส่วนผสมถั่วลิสง ลูกชิ้น หมูหมัก หมูสับ ตับ ไส้อ่อน", type: "soup_noodle", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+            { id: 3, name: "เย็นตาโฟทรงเครื่อง", category: "น้ำ", price: 75, isRec: true, desc: "ลูกชิ้น ปลาเส้น หมึกกรอบ เห็ดหูหนู เลือดก้อน", type: "soup_noodle", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+            { id: 4, name: "ข้าวขาหมูจักรพรรดิ", category: "ขาหมู", price: 109, isRec: true, desc: "ขาหมูรวม ขาหมู+ไส้หมู+ไข่", type: "ขาหมู", img: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=400" },
+            { id: 5, name: "ข้าวซอยไก่", category: "ข้าวซอย", price: 98, isRec: true, desc: "สูตรแท้เชียงใหม่ พร้อมเครื่องเคียงหอมแดงผักกาดดอง", type: "ข้าวซอย", img: "https://images.unsplash.com/photo-1555126634-323283e090fa?w=400" },
+            { id: 6, name: "เส้นคลุกทรงเครื่อง (แห้ง)", category: "แห้ง", price: 75, isRec: true, desc: "มีถั่วลิสง ลูกชิ้น หมูหมัก หมูสับ ตับ", type: "dry_noodle", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+
+            // ก๋วยเตี๋ยวน้ำ
+            { id: 7, name: "ก๋วยเตี๋ยวต้มยำหมูกรอบ สุดอลัง", category: "น้ำ", price: 95, desc: "หมูสับ 2 ช้อนโต๊ะ + หมูกรอบ 40g (ใส่ถั่ว)", type: "soup_noodle", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+            { id: 8, name: "ก๋วยเตี๋ยวน้ำใส หมูทรงเครื่อง", category: "น้ำ", price: 75, desc: "ลูกชิ้น หมูหมัก หมูสับ ปลาเส้น ตับ", type: "soup_noodle", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+            { id: 9, name: "ก๋วยเตี๋ยวคุณหนู", category: "น้ำ", price: 66, desc: "น้ำใส ไม่ผัก ไม่พริกไทย หมูสับ+ลูกชิ้น", type: "kids_noodle", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+
+            // ก๋วยเตี๋ยวแห้ง
+            { id: 10, name: "เส้นคลุกต้มยำ (แห้ง)", category: "แห้ง", price: 75, desc: "ต้มยำแห้งรสเด็ด ใส่เครื่องทรงเครื่องครบครัน", type: "dry_noodle", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 11, name: "เส้นคลุกเย็นตาโฟ (แห้ง)", category: "แห้ง", price: 75, desc: "เย็นตาโฟแห้งรสเข้มข้น", type: "dry_noodle", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 12, name: "เส้นคลุกไข่ดาวเยิ้ม", category: "แห้ง", price: 95, desc: "บะหมี่แบนคลุกซอส ทานคู่ไข่ดาวเยิ้มๆ รสมันกลมกล่อม", type: "dry_noodle", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+
+            // ข้าวซอย
+            { id: 13, name: "ข้าวซอยหมูกรอบ", category: "ข้าวซอย", price: 115, desc: "ข้าวซอยเข้มข้น ท็อปด้วยหมูกรอบทอดใหม่", type: "ข้าวซอย", img: "https://images.unsplash.com/photo-1555126634-323283e090fa?w=400" },
+            { id: 14, name: "ข้าวซอยเนื้อ", category: "ข้าวซอย", price: 125, desc: "เนื้อนุ่มละมุน ลิ้มรสข้าวซอยเหนือแท้ๆ", type: "ข้าวซอย", img: "https://images.unsplash.com/photo-1555126634-323283e090fa?w=400" },
+
+            // ข้าวขาหมู
+            { id: 15, name: "ข้าวขาหมูพะโล้", category: "ขาหมู", price: 85, desc: "ขาหมูพะโล้นุ่มๆ (ไข่ต้มกดเลือกเพิ่ม)", type: "ขาหมู", img: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=400" },
+
+            // กะเพรา/ผัดกระเทียม
+            { id: 16, name: "กะเพราหมูกรอบราดข้าว", category: "กะเพรา", price: 95, desc: "กะเพราหมูกรอบเผ็ดกำลังดี", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 17, name: "กะเพราเครื่องเตี๋ยวราดข้าว", category: "กะเพรา", price: 90, desc: "ลูกชิ้น+ปลาเส้น+หมูสับ+หมูชิ้น+ไส้+ตับ+หมูกรอบ", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 18, name: "กะเพราหมูสับราดข้าว", category: "กะเพรา", price: 80, desc: "กะเพราหมูสับผัดแห้งหอมกลิ่นกระทะ", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 19, name: "กะเพราขาหมูราดข้าว", category: "กะเพรา", price: 95, desc: "ขาหมูพะโล้นุ่มนำมาผัดกะเพลารสจัดจ้าน", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 20, name: "ยอดคะน้าหมูกรอบราดข้าว", category: "กะเพรา", price: 95, desc: "คะน้ากรอบหมูกรอบกลมกล่อม", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 21, name: "หมูหมักผัดกระเทียมราดข้าว", category: "กะเพรา", price: 85, desc: "หมูนุ่มผัดกระเทียมพริกไทย", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 22, name: "หมูกรอบทอดกระเทียมราดข้าว", category: "กะเพรา", price: 95, desc: "หมูกรอบผัดกระเทียมหอมๆ", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 23, name: "กะเพราเนื้อโคขุนราดข้าว", category: "กะเพรา", price: 109, desc: "เนื้อโคขุนสับผัดกะเพราหอมกรุ่น", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+
+            // กับข้าว
+            { id: 24, name: "กะเพราหมูกรอบ (กับข้าว)", category: "กับข้าว", price: 159, desc: "หมูกรอบเน้นๆ 100 กรัม", type: "กับข้าว", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 25, name: "กะเพรากุ้ง (กับข้าว)", category: "กับข้าว", price: 189, desc: "กุ้งสด 8-10 ตัว", type: "กับข้าว", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 26, name: "กะเพราหมูสับ (กับข้าว)", category: "กับข้าว", price: 129, desc: "หมูสับเน้นๆ 120 กรัม", type: "กับข้าว", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 27, name: "ข้าวหอมมะลิ 180กรัม", category: "กับข้าว", price: 18, desc: "ข้าวหอมมะลิร้อนๆ", type: "simple", img: "https://images.unsplash.com/photo-1516684732162-798a0062be99?w=400" },
+
+            // ขนม & เครื่องดื่ม
+            { id: 28, name: "ไอศกรีม เนสท์เล่ รสโยเกิร์ต สตรอเบอรี่", category: "ทานเล่น", price: 48, desc: "แนะนำแช่ช่องฟรีซก่อนทาน", type: "simple", img: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400" },
+            { id: 29, name: "ไอศกรีม เนสท์เล่ รสโอริโอ", category: "ทานเล่น", price: 48, desc: "แนะนำแช่ช่องฟรีซก่อนทาน", type: "simple", img: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400" },
+            { id: 30, name: "ไอศกรีม เนสท์เล่ รสไมโล", category: "ทานเล่น", price: 48, desc: "แนะนำแช่ช่องฟรีซก่อนทาน", type: "simple", img: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400" },
+            { id: 31, name: "เป๊ปซี่ แม็ก", category: "ทานเล่น", price: 22, desc: "เย็นซ่าสดชื่น 0 แคลอรี่", type: "simple", img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400" },
+            { id: 32, name: "น้ำกระเจี๊ยบ", category: "ทานเล่น", price: 40, desc: "น้ำกระเจี๊ยบสูตรเข้มข้น หวานชุ่มคอ", type: "simple", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400" }
+        ];
+
+        let cart = [];
+        let currentItem = null;
+
+        // Render Menus on Load
+        window.onload = function() {
+            renderMenus(menuData);
+        };
+
+        function renderMenus(data) {
+            const allGrid = document.getElementById('all-menu-grid');
+            const recGrid = document.getElementById('recommended-grid');
+            const promoGrid = document.getElementById('promo-grid');
+
+            allGrid.innerHTML = '';
+            recGrid.innerHTML = '';
+            promoGrid.innerHTML = '';
+
+            data.forEach(item => {
+                const card = createCardHTML(item);
+                allGrid.innerHTML += card;
+
+                if (item.isRec) {
+                    recGrid.innerHTML += card;
+                }
+                if (item.category === 'promo') {
+                    promoGrid.innerHTML += card;
+                }
+            });
+        }
+
+        function createCardHTML(item) {
+            const isPromo = item.category === 'promo' ? 'promo-card' : '';
+            const badge = item.category === 'promo' ? '<span class="promo-badge">PROMO</span>' : '';
+            return `
+                <div class="menu-card ${isPromo}">
+                    ${badge}
+                    <div class="menu-img" style="background-image: url('${item.img}')"></div>
+                    <div class="menu-info">
+                        <div>
+                            <div class="menu-title">${item.name}</div>
+                            <div class="menu-desc">${item.desc}</div>
+                        </div>
+                        <div class="menu-bottom">
+                            <span class="menu-price">฿${item.price}</span>
+                            <button class="btn-add" onclick="openModal(${item.id})">+ เลือก</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Section Switcher
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.add('active');
+            document.getElementById(`nav-${sectionId}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Search and Filter Functions
+        function filterMenu() {
+            const text = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = menuData.filter(item => item.name.toLowerCase().includes(text) || item.desc.toLowerCase().includes(text));
+            renderMenus(filtered);
+        }
+
+        function filterCategory(cat) {
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if(cat === 'all') {
+                renderMenus(menuData);
+            } else {
+                const filtered = menuData.filter(item => item.category === cat || item.name.includes(cat));
+                renderMenus(filtered);
+            }
+        }
+
+        // Modal Option Generator
+        function openModal(id) {
+            currentItem = menuData.find(m => m.id === id);
+            document.getElementById('modalTitle').innerText = currentItem.name;
+            document.getElementById('modalDesc').innerText = currentItem.desc;
+
+            const form = document.getElementById('optionsForm');
+            form.innerHTML = '';
+
+            // Generate Dynamic Options according to Type
+            if (currentItem.type.includes('noodle')) {
+                form.innerHTML += `
+                    <div class="option-group">
+                        <h4>เลือกเส้น (เลือก 1 อย่าง)</h4>
+                        <label class="option-item"><input type="radio" name="noodle" value="เส้นเล็ก" checked> เส้นเล็ก <span>+฿0</span></label>
+                        <label class="option-item"><input type="radio" name="noodle" value="เส้นใหญ่"> เส้นใหญ่ <span>+฿0</span></label>
+                        <label class="option-item"><input type="radio" name="noodle" value="เส้นหมี่ขาว"> เส้นหมี่ขาว <span>+฿0</span></label>
+                        <label class="option-item"><input type="radio" name="noodle" value="เกี้ยมอี๋"> เกี้ยมอี๋ <span>+฿0</span></label>
+                        <label class="option-item"><input type="radio" name="noodle" value="วุ้นเส้น" data-price="5"> วุ้นเส้น <span>+฿5</span></label>
+                        <label class="option-item"><input type="radio" name="noodle" value="บะหมี่เหลือง" data-price="5"> บะหมี่เหลือง <span>+฿5</span></label>
+                        <label class="option-item"><input type="radio" name="noodle" value="หมี่เป๊าะ" data-price="5"> หมี่เป๊าะ (บะหมี่แบน) <span>+฿5</span></label>
+                        <label class="option-item"><input type="radio" name="noodle" value="เกาเหลา" data-price="10"> เกาเหลา <span>+฿10</span></label>
+                    </div>
+                `;
+            }
+
+            if (currentItem.type === 'kids_noodle') {
+                form.innerHTML += `
+                    <div class="option-group">
+                        <h4>ก๋วยเตี๋ยวเด็ก (เลือกได้ 1 อย่าง)</h4>
+                        <label class="option-item"><input type="radio" name="kids_opt" value="ลูกชิ้นล้วน (7ลูก)" checked> ลูกชิ้นล้วน (7ลูก)</label>
+                        <label class="option-item"><input type="radio" name="kids_opt" value="หมูสับล้วน"> หมูสับล้วน</label>
+                    </div>
+                `;
+            }
+
+            if (currentItem.type.includes('noodle') || currentItem.type === 'promo_noodle') {
+                form.innerHTML += `
+                    <div class="option-group">
+                        <h4>เพิ่มในก๋วยเตี๋ยว (เลือกได้เพิ่ม)</h4>
+                        <label class="option-item"><input type="checkbox" name="addon" value="เพิ่มเส้น" data-price="15"> เพิ่มเส้น <span>+฿15</span></label>
+                        <label class="option-item"><input type="checkbox" name="addon" value="เพิ่มเส้นแบบจุกๆ" data-price="49"> เพิ่มเส้นแบบจุกๆ <span>+฿49</span></label>
+                        <label class="option-item"><input type="checkbox" name="addon" value="เพิ่มไข่ต้ม" data-price="15"> เพิ่มไข่ต้ม <span>+฿15</span></label>
+                        <label class="option-item"><input type="checkbox" name="addon" value="เพิ่มเครื่อง" data-price="32"> เพิ่มเครื่อง <span>+฿32</span></label>
+                        <label class="option-item"><input type="checkbox" name="addon" value="เพิ่มหมูกรอบ" data-price="45"> เพิ่มหมูกรอบ (30g+) <span>+฿45</span></label>
+                        <label class="option-item"><input type="checkbox" name="addon" value="เกี๊ยวทอด" data-price="20"> เพิ่มเกี๊ยวทอด <span>+฿20</span></label>
+                    </div>
+                `;
+            }
+
+            if (currentItem.type === 'ขาหมู' || currentItem.type === 'promo_pork') {
+                form.innerHTML += `
+                    <div class="option-group">
+                        <h4>ความต้องการพิเศษ</h4>
+                        <label class="option-item"><input type="radio" name="pork_opt" value="ปกติ" checked> ปกติ <span>+฿0</span></label>
+                        <label class="option-item"><input type="radio" name="pork_opt" value="เนื้อล้วน" data-price="10"> เนื้อล้วน <span>+฿10</span></label>
+                        <label class="option-item"><input type="radio" name="pork_opt" value="หนังล้วน" data-price="10"> หนังล้วน <span>+฿10</span></label>
+                    </div>
+                    <div class="option-group">
+                        <h4>ท็อปปิ้งขาหมู</h4>
+                        <label class="option-item"><input type="checkbox" name="addon" value="ไข่พะโล้ 1ฟอง" data-price="15"> ไข่พะโล้ 1 ฟอง <span>+฿15</span></label>
+                        <label class="option-item"><input type="checkbox" name="addon" value="รับน้ำซุป" data-price="5"> รับน้ำซุปด้วย <span>+฿5</span></label>
+                    </div>
+                `;
+            }
+
+            if (currentItem.type === 'กะเพรา') {
+                form.innerHTML += `
+                    <div class="option-group">
+                        <h4>ระดับความเผ็ด</h4>
+                        <label class="option-item"><input type="radio" name="spicy" value="เผ็ดกลาง" checked> เผ็ดกลาง</label>
+                        <label class="option-item"><input type="radio" name="spicy" value="ไม่พริก"> ไม่พริก</label>
+                        <label class="option-item"><input type="radio" name="spicy" value="เผ็ดน้อย"> เผ็ดน้อย</label>
+                        <label class="option-item"><input type="radio" name="spicy" value="เผ็ดมาก"> เผ็ดมาก</label>
+                    </div>
+                    <div class="option-group">
+                        <h4>การเสิร์ฟ</h4>
+                        <label class="option-item"><input type="radio" name="serve" value="ราดข้าวเลย" checked> ราดข้าวเลย</label>
+                        <label class="option-item"><input type="radio" name="serve" value="แยกกับ"> แยกกับ</label>
+                    </div>
+                    <div class="option-group">
+                        <h4>เพิ่มไข่</h4>
+                        <label class="option-item"><input type="checkbox" name="addon" value="ไข่เป็ดดาว" data-price="24"> ไข่เป็ดดาว <span>+฿24</span></label>
+                        <label class="option-item"><input type="checkbox" name="addon" value="ไข่เป็ดเจียว" data-price="24"> ไข่เป็ดเจียว <span>+฿24</span></label>
+                    </div>
+                `;
+            }
+
+            document.getElementById('optionModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('optionModal').style.display = 'none';
+        }
+
+        // Cart Adding Logic
+        function addToCartFromModal() {
+            let extraPrice = 0;
+            let optionsText = [];
+
+            const form = document.getElementById('optionsForm');
+            const inputs = form.querySelectorAll('input:checked');
+
+            inputs.forEach(input => {
+                optionsText.push(input.value);
+                const price = parseInt(input.getAttribute('data-price')) || 0;
+                extraPrice += price;
+            });
+
+            const finalPrice = currentItem.price + extraPrice;
+            cart.push({
+                name: currentItem.name,
+                price: finalPrice,
+                details: optionsText.join(', ')
+            });
+
+            updateCartUI();
+            closeModal();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = `${cart.length} รายการ`;
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('cart-total').innerText = `฿${total}`;
+        }
+
+        function submitOrder() {
+            if (cart.length === 0) {
+                alert('กรุณาเลือกเมนูอาหารก่อนสั่งซื้อครับ');
+                return;
+            }
+
+            let orderSummary = "รายการสั่งซื้อ โรงลวกเส้น:\n";
+            let total = 0;
+            cart.forEach((item, index) => {
+                orderSummary += `${index + 1}. ${item.name} (${item.details}) - ฿${item.price}\n`;
+                total += item.price;
+            });
+            orderSummary += `\nราคารวมทั้งหมด: ฿${total}\n\nกด OK เพื่อไปยังเพจ Facebook ของร้านเพื่อส่งรายการสั่งซื้อ!`;
+
+            if (confirm(orderSummary)) {
+                window.open('https://www.facebook.com/people/%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%A5%E0%B8%A7%E0%B8%81%E0%B9%80%E0%B8%AA%E0%B9%89%E0%B8%99/100034169635363/', '_blank');
+                cart = [];
+                updateCartUI();
+            }
+        }
+    </script>
+</body>
+</html>
