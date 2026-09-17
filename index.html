@@ -640,25 +640,25 @@
         // Database of Menus
         const menuData = [
             // โปรโมชั่น
-            { id: 101, name: "เซ็ท ก๋วยเตี๋ยวน้ำใส + เย็นตาโฟ", category: "promo", price: 159, desc: "จากปกติ 170 แถมฟรีเกี๊ยวทอด(ไม่ใส่ไส้)", type: "assets/โปร1.png" },
+            { id: 101, name: "เซ็ท ก๋วยเตี๋ยวน้ำใส + เย็นตาโฟ", category: "promo", price: 159, desc: "จากปกติ 170 แถมฟรีเกี๊ยวทอด(ไม่ใส่ไส้)", type: "assets/01.png" },
             { id: 102, name: "เซ็ท ข้าวขาหมู + เกาเหลาน้ำใส", category: "promo", price: 159, desc: "จากปกติ 170 ขาหมูไม่มีไข่", type: "promo_pork", img: "assets/2.png" },
             { id: 103, name: "เซ็ท ก๋วยเตี๋ยวต้มยำ + ข้าวซอยไก่", category: "promo", price: 169, desc: "ชุดจับคู่ความอร่อยสุดคุ้ม", type: "promo_combo", img: "assets/3.png" },
 
             // เมนูแนะนำ (isRec: true)
             { id: 1, name: "หมี่คลุกไก่ฉีก", category: "แห้ง", price: 89, isRec: true, desc: "เส้นหมี่เหนียวนุ่ม คลุกซอสครบรส ทานคู่พริกหมูกระจก", type: "dry_noodle", img: "assetsหมี่ไก่ฉีก" },
-            { id: 2, name: "ก๋วยเตี๋ยวต้มยำ หมูทรงเครื่อง", category: "น้ำ", price: 75, isRec: true, desc: "มีส่วนผสมถั่วลิสง ลูกชิ้น หมูหมัก หมูสับ ตับ ไส้อ่อน", type: "soup_noodle", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
-            { id: 3, name: "เย็นตาโฟทรงเครื่อง", category: "น้ำ", price: 75, isRec: true, desc: "ลูกชิ้น ปลาเส้น หมึกกรอบ เห็ดหูหนู เลือดก้อน", type: "soup_noodle", img: "" },
-            { id: 4, name: "ข้าวขาหมูจักรพรรดิ", category: "ขาหมู", price: 109, isRec: true, desc: "ขาหมูรวม ขาหมู+ไส้หมู+ไข่", type: "ขาหมู", img: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=400" },
-            { id: 5, name: "ข้าวซอยไก่", category: "ข้าวซอย", price: 98, isRec: true, desc: "สูตรแท้เชียงใหม่ พร้อมเครื่องเคียงหอมแดงผักกาดดอง", type: "ข้าวซอย", img: "" },
-            { id: 6, name: "เส้นคลุกทรงเครื่อง (แห้ง)", category: "แห้ง", price: 75, isRec: true, desc: "มีถั่วลิสง ลูกชิ้น หมูหมัก หมูสับ ตับ", type: "dry_noodle", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 2, name: "ก๋วยเตี๋ยวต้มยำ หมูทรงเครื่อง", category: "น้ำ", price: 75, isRec: true, desc: "มีส่วนผสมถั่วลิสง ลูกชิ้น หมูหมัก หมูสับ ตับ ไส้อ่อน", type: "soup_noodle", img: "assets/ก๋วยเตี๋ยวต้มยำ หมูทรงเครื่อง.JPG" },
+            { id: 3, name: "เย็นตาโฟทรงเครื่อง", category: "น้ำ", price: 75, isRec: true, desc: "ลูกชิ้น ปลาเส้น หมึกกรอบ เห็ดหูหนู เลือดก้อน", type: "soup_noodle", img: "assets/เย็นตาโฟทรงเครื่อง.JPG" },
+            { id: 4, name: "ข้าวขาหมูจักรพรรดิ", category: "ขาหมู", price: 109, isRec: true, desc: "ขาหมูรวม ขาหมู+ไส้หมู+ไข่", type: "ขาหมู", img: "" },
+            { id: 5, name: "ข้าวซอยไก่", category: "ข้าวซอย", price: 98, isRec: true, desc: "สูตรแท้เชียงใหม่ พร้อมเครื่องเคียงหอมแดงผักกาดดอง", type: "ข้าวซอย", img: "assets/ข้าวซอยไก่.png" },
+            { id: 6, name: "เส้นคลุกทรงเครื่อง (แห้ง)", category: "แห้ง", price: 75, isRec: true, desc: "มีถั่วลิสง ลูกชิ้น หมูหมัก หมูสับ ตับ", type: "dry_noodle", img: "assets/เส้นคลุกทรงเครื่อง.PNG" },
 
             // ก๋วยเตี๋ยวน้ำ
             { id: 7, name: "ก๋วยเตี๋ยวต้มยำหมูกรอบ สุดอลัง", category: "น้ำ", price: 95, desc: "หมูสับ 2 ช้อนโต๊ะ + หมูกรอบ 40g (ใส่ถั่ว)", type: "soup_noodle", img: "assets/บะหมี่หมูกรอบ.png" },
-            { id: 8, name: "ก๋วยเตี๋ยวน้ำใส หมูทรงเครื่อง", category: "น้ำ", price: 75, desc: "ลูกชิ้น หมูหมัก หมูสับ ปลาเส้น ตับ", type: "soup_noodle", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+            { id: 8, name: "ก๋วยเตี๋ยวน้ำใส หมูทรงเครื่อง", category: "น้ำ", price: 75, desc: "ลูกชิ้น หมูหมัก หมูสับ ปลาเส้น ตับ", type: "soup_noodle", img: "assets/ก๋วยเตี๋ยวน้ำใส หมูทรงเครื่อง.PNG" },
             { id: 9, name: "ก๋วยเตี๋ยวคุณหนู", category: "น้ำ", price: 66, desc: "น้ำใส ไม่ผัก ไม่พริกไทย หมูสับ+ลูกชิ้น", type: "kids_noodle", img: "assets/เตี๋ยวคุณหนู.png" },
 
             // ก๋วยเตี๋ยวแห้ง
-            { id: 10, name: "เส้นคลุกต้มยำ (แห้ง)", category: "แห้ง", price: 75, desc: "ต้มยำแห้งรสเด็ด ใส่เครื่องทรงเครื่องครบครัน", type: "dry_noodle", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 10, name: "เส้นคลุกต้มยำ (แห้ง)", category: "แห้ง", price: 75, desc: "ต้มยำแห้งรสเด็ด ใส่เครื่องทรงเครื่องครบครัน", type: "dry_noodle", img: "assets/เส้นคลุกต้มยำ.PNG" },
             { id: 11, name: "เส้นคลุกเย็นตาโฟ (แห้ง)", category: "แห้ง", price: 75, desc: "เย็นตาโฟแห้งรสเข้มข้น", type: "dry_noodle", img: "assets/โฟเเห้ง.png" },
             { id: 12, name: "เส้นคลุกไข่ดาวเยิ้ม", category: "แห้ง", price: 95, desc: "บะหมี่แบนคลุกซอส ทานคู่ไข่ดาวเยิ้มๆ รสมันกลมกล่อม", type: "dry_noodle", img: "assets/บะหมี่ไขดาว.png" },
 
@@ -673,8 +673,8 @@
             { id: 16, name: "กะเพราหมูกรอบราดข้าว", category: "กะเพรา", price: 95, desc: "กะเพราหมูกรอบเผ็ดกำลังดี", type: "กะเพรา", img: "assets/กับเพราหมูกรอบ.jpg" },
             { id: 17, name: "กะเพราเครื่องเตี๋ยวราดข้าว", category: "กะเพรา", price: 90, desc: "ลูกชิ้น+ปลาเส้น+หมูสับ+หมูชิ้น+ไส้+ตับ+หมูกรอบ", type: "กะเพรา", img: "assets/เพราเครื่องเตี๋ยว.png" },
             { id: 18, name: "กะเพราหมูสับราดข้าว", category: "กะเพรา", price: 80, desc: "กะเพราหมูสับผัดแห้งหอมกลิ่นกระทะ", type: "กะเพรา", img: "assets/เพราหมูสับ.jpg" },
-            { id: 19, name: "กะเพราขาหมูราดข้าว", category: "กะเพรา", price: 95, desc: "ขาหมูพะโล้นุ่มนำมาผัดกะเพลารสจัดจ้าน", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
-            { id: 20, name: "ยอดคะน้าหมูกรอบราดข้าว", category: "กะเพรา", price: 95, desc: "คะน้ากรอบหมูกรอบกลมกล่อม", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 19, name: "กะเพราขาหมูราดข้าว", category: "กะเพรา", price: 95, desc: "ขาหมูพะโล้นุ่มนำมาผัดกะเพลารสจัดจ้าน", type: "กะเพรา", img: "assets/เพราขาหมู.png" },
+            { id: 20, name: "ยอดคะน้าหมูกรอบราดข้าว", category: "กะเพรา", price: 95, desc: "คะน้ากรอบหมูกรอบกลมกล่อม", type: "กะเพรา", img: "assets/คะน้า.jpg" },
             { id: 21, name: "หมูหมักผัดกระเทียมราดข้าว", category: "กะเพรา", price: 85, desc: "หมูนุ่มผัดกระเทียมพริกไทย", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
             { id: 22, name: "หมูกรอบทอดกระเทียมราดข้าว", category: "กะเพรา", price: 95, desc: "หมูกรอบผัดกระเทียมหอมๆ", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
             { id: 23, name: "กะเพราเนื้อโคขุนราดข้าว", category: "กะเพรา", price: 109, desc: "เนื้อโคขุนสับผัดกะเพราหอมกรุ่น", type: "กะเพรา", img: "assets/เพราเนื้อ.png" },
