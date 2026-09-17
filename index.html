@@ -640,9 +640,9 @@
         // Database of Menus
         const menuData = [
             // โปรโมชั่น
-            { id: 101, name: "เซ็ท ก๋วยเตี๋ยวน้ำใส + เย็นตาโฟ", category: "promo", price: 159, desc: "จากปกติ 170 แถมฟรีเกี๊ยวทอด(ไม่ใส่ไส้)", type: "promo_noodle", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
-            { id: 102, name: "เซ็ท ข้าวขาหมู + เกาเหลาน้ำใส", category: "promo", price: 159, desc: "จากปกติ 170 ขาหมูไม่มีไข่", type: "promo_pork", img: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=400" },
-            { id: 103, name: "เซ็ท ก๋วยเตี๋ยวต้มยำ + ข้าวซอยไก่", category: "promo", price: 169, desc: "ชุดจับคู่ความอร่อยสุดคุ้ม", type: "promo_combo", img: "https://images.unsplash.com/photo-1555126634-323283e090fa?w=400" },
+            { id: 101, name: "เซ็ท ก๋วยเตี๋ยวน้ำใส + เย็นตาโฟ", category: "promo", price: 159, desc: "จากปกติ 170 แถมฟรีเกี๊ยวทอด(ไม่ใส่ไส้)", type: "" },
+            { id: 102, name: "เซ็ท ข้าวขาหมู + เกาเหลาน้ำใส", category: "promo", price: 159, desc: "จากปกติ 170 ขาหมูไม่มีไข่", type: "promo_pork", img: "assets/2.png" },
+            { id: 103, name: "เซ็ท ก๋วยเตี๋ยวต้มยำ + ข้าวซอยไก่", category: "promo", price: 169, desc: "ชุดจับคู่ความอร่อยสุดคุ้ม", type: "promo_combo", img: "assets/3.png" },
 
             // เมนูแนะนำ (isRec: true)
             { id: 1, name: "หมี่คลุกไก่ฉีก", category: "แห้ง", price: 89, isRec: true, desc: "เส้นหมี่เหนียวนุ่ม คลุกซอสครบรส ทานคู่พริกหมูกระจก", type: "dry_noodle", img: "assetsหมี่ไก่ฉีก" },
@@ -660,11 +660,11 @@
             // ก๋วยเตี๋ยวแห้ง
             { id: 10, name: "เส้นคลุกต้มยำ (แห้ง)", category: "แห้ง", price: 75, desc: "ต้มยำแห้งรสเด็ด ใส่เครื่องทรงเครื่องครบครัน", type: "dry_noodle", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
             { id: 11, name: "เส้นคลุกเย็นตาโฟ (แห้ง)", category: "แห้ง", price: 75, desc: "เย็นตาโฟแห้งรสเข้มข้น", type: "dry_noodle", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
-            { id: 12, name: "เส้นคลุกไข่ดาวเยิ้ม", category: "แห้ง", price: 95, desc: "บะหมี่แบนคลุกซอส ทานคู่ไข่ดาวเยิ้มๆ รสมันกลมกล่อม", type: "dry_noodle", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 12, name: "เส้นคลุกไข่ดาวเยิ้ม", category: "แห้ง", price: 95, desc: "บะหมี่แบนคลุกซอส ทานคู่ไข่ดาวเยิ้มๆ รสมันกลมกล่อม", type: "dry_noodle", img: "assets/บะหมี่ไขดาว.png" },
 
             // ข้าวซอย
-            { id: 13, name: "ข้าวซอยหมูกรอบ", category: "ข้าวซอย", price: 115, desc: "ข้าวซอยเข้มข้น ท็อปด้วยหมูกรอบทอดใหม่", type: "ข้าวซอย", img: "https://images.unsplash.com/photo-1555126634-323283e090fa?w=400" },
-            { id: 14, name: "ข้าวซอยเนื้อ", category: "ข้าวซอย", price: 125, desc: "เนื้อนุ่มละมุน ลิ้มรสข้าวซอยเหนือแท้ๆ", type: "ข้าวซอย", img: "https://images.unsplash.com/photo-1555126634-323283e090fa?w=400" },
+            { id: 13, name: "ข้าวซอยหมูกรอบ", category: "ข้าวซอย", price: 115, desc: "ข้าวซอยเข้มข้น ท็อปด้วยหมูกรอบทอดใหม่", type: "ข้าวซอย", img: "assets/ข้าวซอยหมูกรอบ.png" },
+            { id: 14, name: "ข้าวซอยเนื้อ", category: "ข้าวซอย", price: 125, desc: "เนื้อนุ่มละมุน ลิ้มรสข้าวซอยเหนือแท้ๆ", type: "ข้าวซอย", img: "" },
 
             // ข้าวขาหมู
             { id: 15, name: "ข้าวขาหมูพะโล้", category: "ขาหมู", price: 85, desc: "ขาหมูพะโล้นุ่มๆ (ไข่ต้มกดเลือกเพิ่ม)", type: "ขาหมู", img: "assets/ข้าวขาหมู.png" },
@@ -677,7 +677,7 @@
             { id: 20, name: "ยอดคะน้าหมูกรอบราดข้าว", category: "กะเพรา", price: 95, desc: "คะน้ากรอบหมูกรอบกลมกล่อม", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
             { id: 21, name: "หมูหมักผัดกระเทียมราดข้าว", category: "กะเพรา", price: 85, desc: "หมูนุ่มผัดกระเทียมพริกไทย", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
             { id: 22, name: "หมูกรอบทอดกระเทียมราดข้าว", category: "กะเพรา", price: 95, desc: "หมูกรอบผัดกระเทียมหอมๆ", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
-            { id: 23, name: "กะเพราเนื้อโคขุนราดข้าว", category: "กะเพรา", price: 109, desc: "เนื้อโคขุนสับผัดกะเพราหอมกรุ่น", type: "กะเพรา", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
+            { id: 23, name: "กะเพราเนื้อโคขุนราดข้าว", category: "กะเพรา", price: 109, desc: "เนื้อโคขุนสับผัดกะเพราหอมกรุ่น", type: "กะเพรา", img: "assets/เพราเนื้อ.png" },
 
             // กับข้าว
             { id: 24, name: "กะเพราหมูกรอบ (กับข้าว)", category: "กับข้าว", price: 159, desc: "หมูกรอบเน้นๆ 100 กรัม", type: "กับข้าว", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400" },
@@ -690,7 +690,7 @@
             { id: 29, name: "ไอศกรีม เนสท์เล่ รสโอริโอ", category: "ทานเล่น", price: 48, desc: "แนะนำแช่ช่องฟรีซก่อนทาน", type: "simple", img: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400" },
             { id: 30, name: "ไอศกรีม เนสท์เล่ รสไมโล", category: "ทานเล่น", price: 48, desc: "แนะนำแช่ช่องฟรีซก่อนทาน", type: "simple", img: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400" },
             { id: 31, name: "เป๊ปซี่ แม็ก", category: "ทานเล่น", price: 22, desc: "เย็นซ่าสดชื่น 0 แคลอรี่", type: "simple", img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400" },
-            { id: 32, name: "น้ำกระเจี๊ยบ", category: "ทานเล่น", price: 40, desc: "น้ำกระเจี๊ยบสูตรเข้มข้น หวานชุ่มคอ", type: "simple", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400" }
+            { id: 32, name: "น้ำกระเจี๊ยบ", category: "ทานเล่น", price: 40, desc: "น้ำกระเจี๊ยบสูตรเข้มข้น หวานชุ่มคอ", type: "simple", img: "assets/น้ำกระเจี๊ยบ.png" }
         ];
 
         let cart = [];
